@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#483D8B</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    //main menu colors
+    <color name="main_color_first">#6A5ACD</color>
+    <color name="lime_green">#B5FF7A</color>
+    <color name="sky_blue">#6ED3FF</color>
+</resources>

@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/shadow_view"
+    android:layout_height="150dp"
+    android:layout_margin="8dp"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:id="@+id/tvDocumentName"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:text = "Справка о зарабртной плате"
+            />
+        <TextView
+            android:id="@+id/tvDocumentDescription"
+            android:layout_margin="8dp"
+            tools:text ="Cправка с места работы с указанием должности и заработной платы либо копия декларации о "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_weight="0.1"
+        android:layout_margin="8dp"
+        android:src="@drawable/ic_check_green"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+</LinearLayout>
