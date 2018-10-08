@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import infamily.neobis.infamily.R
-import infamily.neobis.infamily.model.Category
+import infamily.neobis.infamily.model.Section
 import kotlinx.android.synthetic.main.item_category.view.*
 
 
-class AdoptAdapter(private var list:List<Category>,var listener:Listener):
+class AdoptAdapter(private var list:List<Section>, var listener:Listener):
         RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.item_category,p0,false)
@@ -32,7 +32,7 @@ class AdoptAdapter(private var list:List<Category>,var listener:Listener):
             val layoutParams = cardView.getLayoutParams() as ViewGroup.MarginLayoutParams
             layoutParams.bottomMargin = 64
             cardView.requestLayout()
-            cardView.setCardBackgroundColor(ContextCompat.getColor(itemView.context, list[position].backgroundColor))
+            cardView.setBackgroundResource(R.drawable.main_rectangle)
             itemView.tvTitle.text = list[position].title
             itemView.iwImage.setBackgroundResource(list[position].imageId)
             itemView.tag = position

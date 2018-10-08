@@ -5,7 +5,7 @@
     android:layout_marginRight="8dp"
     android:layout_marginBottom="16dp"
     android:layout_width="match_parent"
-    android:background="@drawable/shadow_view"
+    android:background="@drawable/main_rectangle"
     android:layout_height="150dp">
         <TextView
             android:textSize="16sp"
@@ -13,7 +13,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:textColor="#000000"
+            android:textColor="@android:color/white"
             android:gravity="center_horizontal"
             android:text="Вопрос"
             android:layout_width="match_parent"

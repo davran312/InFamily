@@ -26,6 +26,7 @@
     <string name="error_phone">Введите корректный номер телефона</string>
     <string name="success_registration">Регистрация прошла успешно</string>
     <string name="ok">Продолжить</string>
+    <string name="no_internet">Нет соединения с сервером</string>
 
     <string-array name="questions_array">
         <item>1. Давно ли вы думаете об усыновлении/опеке? (более полугода)</item>

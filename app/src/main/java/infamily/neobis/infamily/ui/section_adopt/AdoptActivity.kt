@@ -5,7 +5,7 @@ import android.os.Bundle
 import infamily.neobis.infamily.R
 import infamily.neobis.infamily.StartApplication
 import infamily.neobis.infamily.data.Data
-import infamily.neobis.infamily.model.Category
+import infamily.neobis.infamily.model.Section
 import infamily.neobis.infamily.ui.BaseActivity
 import infamily.neobis.infamily.ui.section_adopt.authorization.AuthorizationActivity
 import infamily.neobis.infamily.ui.section_adopt.send_application.ApplicationActivity
@@ -26,10 +26,6 @@ class AdoptActivity: BaseActivity(),AdoptAdapter.Listener {
     }
 
     private fun initListeners() {
-        backArrow.setOnClickListener {
-            onBackPressed()
-
-        }
 
     }
 
@@ -38,7 +34,7 @@ class AdoptActivity: BaseActivity(),AdoptAdapter.Listener {
         recyclerView.adapter = adapter
     }
 
-    private fun getAdoptCategoriesList(): List<Category> {
+    private fun getAdoptCategoriesList(): List<Section> {
         return Data.getAdoptCategories(this)
     }
     override fun onItemSelectedAt(positon: Int) {

@@ -29,11 +29,10 @@ object Network {
                 }.writeTimeout(REQUEST_TIME_MINUTE,TimeUnit.MINUTES)
                 .readTimeout(REQUEST_TIME_MINUTE,TimeUnit.MINUTES)
                 .connectTimeout(REQUEST_TIME_MINUTE,TimeUnit.MINUTES)
-        if(BuildConfig.DEBUG){
+
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             client.addInterceptor(interceptor)
-        }
         return client.build()
     }
 

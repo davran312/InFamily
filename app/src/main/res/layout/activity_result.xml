@@ -1,27 +1,12 @@
 <LinearLayout
-    android:background="#40eae129"
+    android:background="@color/mainBackColor"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tool="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/backArrow"
-            android:layout_margin="16dp"
-            android:src="@drawable/back_arrow"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
-        <ImageView
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/infamily_logo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+
     <LinearLayout
         android:background="@drawable/rectangle"
         android:orientation="vertical"

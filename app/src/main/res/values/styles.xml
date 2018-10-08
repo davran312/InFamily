@@ -1,13 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">#6A5ACD</item>
+        <item name="colorPrimaryDark">#0085c1</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/segoe_regular</item>
-        
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+
     </style>
     <style name="TestButon" parent="@android:style/Widget.Button">
     <!-- Customize your theme here. -->
@@ -17,11 +19,15 @@
         <item name="android:shadowColor">@color/sky_blue</item>
         <item name="android:shadowRadius">20</item>
         <item name="android:layout_marginRight">30dp</item>
-        <item name="android:background">@drawable/blue_rectangle</item>
+        <item name="android:background">@drawable/main_rectangle</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_height">30dp</item>
+    </style>
+    <style name="error_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
 </resources>

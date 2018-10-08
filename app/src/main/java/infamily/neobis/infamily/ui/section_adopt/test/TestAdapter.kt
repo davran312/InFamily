@@ -37,14 +37,14 @@ class TestAdapter (private var list: Array<String>
                 val index = it.tag as Int
                 itemView.btn_yes.setBackgroundResource(
                 R.drawable.grenn_rectangle)
-                itemView.btn_no.setBackgroundResource(R.drawable.blue_rectangle)
+                itemView.btn_no.setBackgroundResource(R.drawable.main_rectangle)
                 map[index] = true
             }
             itemView.btn_no.tag = position
             itemView.btn_no.setOnClickListener {
                 val index = it.tag as Int
                 itemView.btn_yes.setBackgroundResource(
-                        R.drawable.blue_rectangle)
+                        R.drawable.main_rectangle)
                 itemView.btn_no.setBackgroundResource(R.drawable.grenn_rectangle)
                 map[index] = false
             }

@@ -1,6 +1,7 @@
 package infamily.neobis.infamily.ui
 
 import android.app.ProgressDialog
+import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import infamily.neobis.infamily.R
 import kotlin.properties.Delegates
@@ -12,6 +13,8 @@ open class  BaseActivity: AppCompatActivity(){
         super.setContentView(layoutResID)
 
     }
+
+
     open fun showProgress(){
         this.runOnUiThread {
             if(progressBar == null && !isFinishing){

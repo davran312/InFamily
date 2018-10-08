@@ -1,3 +1,3 @@
 package infamily.neobis.infamily.model
 
-class  Category(var title:String,var backgroundColor:Int,var imageId:Int)
+data class Category(var id: Int?, var title: String, var content: String, var image: String)

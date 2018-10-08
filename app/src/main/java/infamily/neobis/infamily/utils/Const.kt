@@ -7,4 +7,12 @@ object Const {
     val USER_NAME = "username"
     val USER_MAIL = "usermail"
     val USER_PHONE = "userphone"
+    val SECTION_CHILD_ID  = 1
+    val SECTION_PARENT_ID  = 2
+    val TIMELINE_EXTRA = "timeline"
+    val CAMERA  = 3
+    val GALLERY  = 4
+
+
+
 }

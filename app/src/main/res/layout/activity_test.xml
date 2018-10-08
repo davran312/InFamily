@@ -5,27 +5,13 @@
     android:layout_width="match_parent">
 
 <LinearLayout
+    android:background="@color/colorAccent"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/backArrow"
-            android:layout_margin="16dp"
-            android:src="@drawable/back_arrow"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
-        <ImageView
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/infamily_logo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         android:id="@+id/recyclerView"
@@ -37,7 +23,7 @@
         android:textColor="@android:color/white"
         android:text="@string/finish_test"
         android:layout_margin="32dp"
-        android:background="@drawable/blue_rectangle"
+        android:background="@drawable/main_rectangle"
         android:layout_height="50dp"
         android:layout_width="match_parent"
         />
