@@ -5,7 +5,6 @@ import android.support.design.widget.Snackbar
 import infamily.neobis.infamily.R
 import infamily.neobis.infamily.model.Category
 import infamily.neobis.infamily.ui.BaseActivity
-import infamily.neobis.infamily.ui.section_child.ChildAdapter
 import infamily.neobis.infamily.utils.Const
 import kotlinx.android.synthetic.main.activity_adopt.*
 
@@ -26,7 +25,8 @@ class TimelineActivity:BaseActivity(),TimelineContract.View,TimelineAdapter.List
         presenter.getTimelines(intent.getIntExtra(Const.TIMELINE_EXTRA,0))
     }
 
-    override fun onItemSeletedAt(position: Int) {
+    override fun onItemSeletedAt(position: Category) {
+        presenter.startActivity(this,position)
     }
     override fun onFailure() {
         Snackbar.make(rootView,getString(R.string.no_internet),Snackbar.LENGTH_SHORT).show()

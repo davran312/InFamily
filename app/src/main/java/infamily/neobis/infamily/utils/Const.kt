@@ -12,7 +12,11 @@ object Const {
     val TIMELINE_EXTRA = "timeline"
     val CAMERA  = 3
     val GALLERY  = 4
-
+    val EXTRA_ARTICLE ="article"
+    val OWNER_ID="id"
+    val OWNER_STATUS ="status"
+    val SERVER_INFO = "server_info"
+    val TAG_FOR_SHOW_DIALOG_FRAGMENT = "tag"
 
 
 }

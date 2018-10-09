@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import infamily.neobis.infamily.StartApplication
 import infamily.neobis.infamily.model.Category
+import infamily.neobis.infamily.ui.article.ArticleActivity
+import infamily.neobis.infamily.utils.Const
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,6 +38,13 @@ class TimelinePresenter(val view :TimelineContract.View):TimelineContract.Presen
                     }
         )}
     }
+    fun startActivity(activity: TimelineActivity,category:Category){
+        val intent = Intent(activity,ArticleActivity::class.java)
+        intent.putExtra(Const.EXTRA_ARTICLE,category)
+        activity.startActivity(intent)
+
+    }
+
 
 
     fun isViewAttached():Boolean = view != null

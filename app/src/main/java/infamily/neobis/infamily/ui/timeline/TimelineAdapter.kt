@@ -1,6 +1,5 @@
 package infamily.neobis.infamily.ui.timeline
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -32,13 +31,14 @@ class TimelineAdapter(private var timelineList:List<Category>,val listener:Liste
             itemView.tag = position
             itemView.setOnClickListener {
                 val index = it.tag as Int
-                listener.onItemSeletedAt(index)
+                listener.onItemSeletedAt(timelineList.get(index))
             }
 
         }
     }
 
+
     interface Listener{
-        fun onItemSeletedAt(position: Int)
+        fun onItemSeletedAt(position: Category)
     }
 }

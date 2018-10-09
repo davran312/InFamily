@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/mainBackColor"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/rootview">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -13,10 +14,16 @@
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             xmlns:tools="http://schemas.android.com/tools"
             tools:listitem="@layout/item_document"/>
-
+        <Button
+            android:id="@+id/btn_send"
+            android:text="@string/send_application"
+            style="@style/TestButon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
+
 
 </android.support.v4.widget.NestedScrollView>

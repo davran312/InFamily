@@ -27,6 +27,17 @@
     <string name="success_registration">Регистрация прошла успешно</string>
     <string name="ok">Продолжить</string>
     <string name="no_internet">Нет соединения с сервером</string>
+    <string name="send_application">Отправить заявку</string>
+    <string name="success_application">Заявка успешно отправлена</string>
+    <string name="failure_application">Не удалось соединиться с сервером</string>
+    <string name="retry">Повторить</string>
+    <string name="fill">Заполните все поля</string>
+    <string name="server_status">Статус сервера</string>
+    <string name="status_tryagain">Ваша заявка находится на стадии расмотра.</string>
+    <string name="status1">Вы уже отправили заявку, В данное время заявка находится в очереди на рассмотрение</string>
+    <string name="status3">Ваша заявка в текущее время находится на проверке администрацией</string>
+    <string name="status4">Ваша заявка была рассмотрена и требует переотправки некоторых документов.</string>
+    <string name="status5">Ваша заявка успешно принята. С вами в ближайшее время свяжутся специалисты.</string>
 
     <string-array name="questions_array">
         <item>1. Давно ли вы думаете об усыновлении/опеке? (более полугода)</item>
@@ -73,6 +84,15 @@
             здоровья лица и членов его семьи, желающего усыновить ребенка, оформленное в порядке,
             установленном Министерством здравоохранения Кыргызской Республики </item>
         <item>Xарактеристика с места работы и с места жительства</item>
+
+    </string-array>
+    <string-array name="server_document_titles">
+        <item>family</item>
+        <item>income</item>
+        <item>residence</item>
+        <item>criminal_record</item>
+        <item>health</item>
+        <item>char_job</item>
 
     </string-array>
 </resources>
