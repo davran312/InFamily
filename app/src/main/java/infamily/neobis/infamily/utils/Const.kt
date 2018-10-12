@@ -17,6 +17,11 @@ object Const {
     val OWNER_STATUS ="status"
     val SERVER_INFO = "server_info"
     val TAG_FOR_SHOW_DIALOG_FRAGMENT = "tag"
+    val SERIALAIZABLE = "serialaziable"
+    val EXTRA_SPECIALIST_ID = "extra_specialist"
+    val REFRESHED_TOKEN_FOR_FIREBASE = "Token"
+    val FIREBASE_TOKEN  = "TOKEN"
+    val NOTIFCATION_INTENT = "notification"
 
 
 }

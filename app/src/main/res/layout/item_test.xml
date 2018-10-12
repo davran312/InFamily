@@ -6,7 +6,7 @@
     android:layout_marginBottom="16dp"
     android:layout_width="match_parent"
     android:background="@drawable/main_rectangle"
-    android:layout_height="150dp">
+    android:layout_height="160dp">
         <TextView
             android:textSize="16sp"
             android:id="@+id/tvTitle"

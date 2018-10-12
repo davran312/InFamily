@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "53750253318",
+    "firebase_url": "https://infamily-1901b.firebaseio.com",
+    "project_id": "infamily-1901b",
+    "storage_bucket": "infamily-1901b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53750253318:android:10a2862de080e47d",
+        "android_client_info": {
+          "package_name": "infamily.neobis.infamily"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53750253318-dp6d3lck8040cshb0uhnd1saqpotha97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTLzGGxKqX3Cp-WtOsekZ1s8NyYLffbbw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

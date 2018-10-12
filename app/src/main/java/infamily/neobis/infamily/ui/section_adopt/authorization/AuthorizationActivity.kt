@@ -6,12 +6,12 @@ import android.support.design.widget.Snackbar
 import android.text.Editable
 import android.text.TextWatcher
 import infamily.neobis.infamily.R
+import infamily.neobis.infamily.R.id.btn_registration
 import infamily.neobis.infamily.ui.BaseActivity
 import infamily.neobis.infamily.ui.section_adopt.send_application.ApplicationActivity
 import kotlinx.android.synthetic.main.activity_authorization.*
 
 class AuthorizationActivity : BaseActivity(),AuthorizationContract.View{
-
 
 
     private lateinit var presenter :AuthorizationContract.Presenter
@@ -39,39 +39,6 @@ class AuthorizationActivity : BaseActivity(),AuthorizationContract.View{
             val phone = etPhone.text.toString()
             presenter.checkInputFields(name,mail,phone)
         }
-    }
-
-
-
-    override fun onSuccessCheckFields() {
-        presenter.saveUserData(etLogin.text.toString(),etMail.text.toString(),etPhone.text.toString())
-
-
-    }
-
-
-    override fun onIncorrectName() {
-        input_login.error = getString(R.string.error_login)
-        input_login.isErrorEnabled = true
-    }
-
-    override fun onIncorrectEmail() {
-        input_mail.error = getString(R.string.error_mail)
-        input_mail.isErrorEnabled = true
-    }
-
-    override fun onIncorrectPhone() {
-        input_phone.error = getString(R.string.error_phone)
-        input_phone.isErrorEnabled = true
-    }
-    override fun onSuccessUserDataSaved() {
-        Snackbar.make(rootView,getString(R.string.success_registration),Snackbar.LENGTH_LONG).setAction(R.string.ok,
-                {finishRegistration()}).show()
-    }
-
-    private fun finishRegistration(){
-        startActivity(Intent(this,ApplicationActivity::class.java))
-        finish()
     }
 
     private fun initInputLayoutTextWatcherListeners() {
@@ -116,6 +83,45 @@ class AuthorizationActivity : BaseActivity(),AuthorizationContract.View{
 
         })
     }
+
+    override fun onSuccessCheckFields() {
+        presenter.saveUserData(etLogin.text.toString(),etMail.text.toString(),etPhone.text.toString())
+    }
+
+    override fun onIncorrectName() {
+        input_login.error = getString(R.string.error_login)
+        input_login.isErrorEnabled = true
+    }
+
+    override fun onIncorrectEmail() {
+        input_mail.error = getString(R.string.error_mail)
+        input_mail.isErrorEnabled = true
+    }
+
+    override fun onIncorrectPhone() {
+        input_phone.error = getString(R.string.error_phone)
+        input_phone.isErrorEnabled = true
+    }
+    override fun onSuccessUserDataSaved() {
+        presenter.sendFirebaseToken()
+    }
+
+    override fun onSuccessTokenSending() {
+        Snackbar.make(rootView,getString(R.string.success_registration),Snackbar.LENGTH_LONG).show()
+        finishRegistration()
+    }
+    private fun finishRegistration(){
+        startActivity(Intent(this,ApplicationActivity::class.java))
+        finish()
+    }
+    override fun onFailureTokenSending() {
+        Snackbar.make(rootView,getString(R.string.no_internet),Snackbar.LENGTH_LONG).setAction(R.string.ok,
+                {finishRegistration()}).show()
+    }
+
+
+
+
 
 
 

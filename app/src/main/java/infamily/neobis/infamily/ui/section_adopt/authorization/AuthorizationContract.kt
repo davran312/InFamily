@@ -9,10 +9,13 @@ interface AuthorizationContract {
         fun onIncorrectEmail()
         fun onIncorrectPhone()
         fun onSuccessUserDataSaved()
+        fun onSuccessTokenSending()
+        fun onFailureTokenSending()
     }
 
     interface Presenter{
         fun checkInputFields(name:String,email:String,phone:String)
         fun saveUserData(name:String,mail:String,phone:String)
+        fun sendFirebaseToken()
     }
 }

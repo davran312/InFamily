@@ -1,15 +1,12 @@
 package infamily.neobis.infamily.ui.section_adopt.send_application
 
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
-import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
+import android.util.Log.e
 import id.zelory.compressor.Compressor
 import infamily.neobis.infamily.BuildConfig
 import infamily.neobis.infamily.R
@@ -31,7 +28,54 @@ class ApplicationPresenter(val activity:AppCompatActivity,val view:ApplicationCo
 
     private val map:HashMap<String,String> = HashMap()
     override fun updateApplcication() {
+        if(isApplicationFilled()){
+        val ownerId = StartApplication.sharedPreference.getInt(Const.OWNER_ID,0)
+        val ownerNumber = StartApplication.sharedPreference.getString(Const.USER_PHONE,null)
+        val bodyBuilder = MultipartBody.Builder()
+        updateApplicaiton(bodyBuilder,activity)
+        if(isViewAttached()){
+            view.showProgress()
+            StartApplication.service.updateDocumentStatus(bodyBuilder.build(),ownerId,ownerNumber!!)
+                    .enqueue(object :Callback<DocumentStatus>{
+                        override fun onFailure(call: Call<DocumentStatus>?, t: Throwable?) {
+                            if(isViewAttached()){
+                                view.onFailureConnnectedWithServer()
+                                e("_______", t?.message)
+                                view.hideProgress()
+                            }
+                        }
 
+                        override fun onResponse(call: Call<DocumentStatus>?, response: Response<DocumentStatus>?) {
+                            if(isViewAttached()){
+                                if(response!!.isSuccessful && response.body() != null){
+                                    view.onSuccessApplicationUpdated()
+                                    view.hideProgress()
+                                }
+                            }
+                        }
+
+                    })
+                }
+            }
+        else view.onFailureApplicationFilled()
+        }
+
+    private fun updateApplicaiton(bodyBuilder: MultipartBody.Builder, activity: AppCompatActivity) {
+        applyDocumentsToBodyBuilder(bodyBuilder)
+
+    }
+
+    private fun applyDocumentsToBodyBuilder(bodyBuilder: MultipartBody.Builder) {
+        val array : Array<out String>? = activity.resources.getStringArray(R.array.server_document_titles)
+        for(i in 0 until 6) {
+            val imagePath = StartApplication.sharedPreference.getString(i.toString(), "null")
+            if (imagePath != "null") {
+                val file = File(imagePath)
+                bodyBuilder.addFormDataPart(array?.get(i)!!, file.name, RequestBody.create(MediaType.parse(
+                        "multipart/form-data"), file))
+            }
+            bodyBuilder.setType(MultipartBody.FORM)
+        }
     }
 
     override fun sendApplciation() {
@@ -70,45 +114,16 @@ class ApplicationPresenter(val activity:AppCompatActivity,val view:ApplicationCo
         else view.onFailureApplicationFilled()
     }
 
-    override fun checkApplicaitonStatus() {
-        if(isViewAttached()){
-            view.showProgress()
-            val id = StartApplication.sharedPreference.getInt(Const.OWNER_ID,0)
-            val device = StartApplication.sharedPreference.getString(Const.USER_PHONE,null)
-            StartApplication.service.checkStatus(id,device).enqueue(
-                    object:Callback<DocumentStatus>{
-                        override fun onFailure(call: Call<DocumentStatus>?, t: Throwable?) {
-                            view.hideProgress()
-                            view.onFailureConnnectedWithServer()
-                        }
-
-                        override fun onResponse(call: Call<DocumentStatus>?, response: Response<DocumentStatus>?) {
-                            view.hideProgress()
-                            view.onSuccessApplicationStatusChecked(response?.body()!!)
-                        }
-
-                    })
-        }
-    }
-
     private fun fillApplication(bodyBuilder: MultipartBody.Builder, activity: AppCompatActivity) {
 
         val name = StartApplication.sharedPreference.getString(Const.USER_NAME,"null")
         val phone = StartApplication.sharedPreference.getString(Const.USER_PHONE,"null")
         val email = StartApplication.sharedPreference.getString(Const.USER_MAIL,"null")
-        bodyBuilder.addFormDataPart("name",name)
-        bodyBuilder.addFormDataPart("phone",phone)
-        bodyBuilder.addFormDataPart("email",email)
+        bodyBuilder.addFormDataPart("name",name!!)
+        bodyBuilder.addFormDataPart("phone",phone!!)
+        bodyBuilder.addFormDataPart("email",email!!)
         bodyBuilder.addFormDataPart("device_id",phone)
-        val array : Array<out String>? = activity.resources.getStringArray(R.array.server_document_titles)
-        for(i in 0 until 6){
-            var imagePath = StartApplication.sharedPreference.getString(i.toString(),"null")
-            var file = File(imagePath)
-            bodyBuilder.addFormDataPart(array?.get(i),file.name, RequestBody.create(MediaType.parse(
-                    "multipart/form-data"),file))
-        }
-        bodyBuilder.setType(MultipartBody.FORM)
-
+        applyDocumentsToBodyBuilder(bodyBuilder)
     }
 
     private var imagePath:String? = null
@@ -160,22 +175,19 @@ class ApplicationPresenter(val activity:AppCompatActivity,val view:ApplicationCo
              view.onSuccessedSavePath()
          }
     fun saveGalleryPath(data:Intent){
-        if(data != null){
             imagePath = FileUtils.getImagePathFromInputStreamUri(StartApplication.INSTANCE,data.data)
             StartApplication.sharedPreference.edit().putString(mPosition.toString(),imagePath).apply()
             view.onSuccessedSavePath()
 
-
-        }
     }
     fun isApplicationFilled():Boolean {
         if ((!map.isEmpty() && map.size < 6) || map.isEmpty()) {
             for (i in 0 until 6) {
-                var imagePath = StartApplication.sharedPreference.getString(i.toString(), "null")
+                val imagePath = StartApplication.sharedPreference.getString(i.toString(), "null")
                 if (imagePath == "null")
                     return false
                 else
-                    map.put(i.toString(), imagePath)
+                    map.put(i.toString(), imagePath!!)
 
             }
 

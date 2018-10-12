@@ -10,6 +10,7 @@ import infamily.neobis.infamily.model.DocumentStatus
 import infamily.neobis.infamily.ui.BaseActivity
 import infamily.neobis.infamily.ui.section_adopt.ApplicationAdapter
 import infamily.neobis.infamily.utils.Const
+import infamily.neobis.infamily.utils.Permissions
 import kotlinx.android.synthetic.main.activity_application.*
 
 class ApplicationActivity :BaseActivity() ,ApplicationAdapter.Listener,ApplicationContract.View{
@@ -36,17 +37,15 @@ class ApplicationActivity :BaseActivity() ,ApplicationAdapter.Listener,Applicati
         recyclerView.adapter = adapter
     }
     private fun initListeners() {
-        btn_send.setOnClickListener {
-            checkBeforeSendingAndSetListener()
-        }
-    }
-
-    private fun checkBeforeSendingAndSetListener() {
-        if(presenter.isFirstSending()){
-            presenter.sendApplciation()
-        }
+        if(presenter.isFirstSending())
+            btn_send.setOnClickListener {
+                presenter.sendApplciation()
+            }
         else{
-            presenter.checkApplicaitonStatus()
+            btn_send.setOnClickListener {
+                presenter.updateApplcication()
+            }
+            btn_send.text = getString(R.string.update)
         }
     }
 
@@ -64,6 +63,14 @@ class ApplicationActivity :BaseActivity() ,ApplicationAdapter.Listener,Applicati
             }
         }
     }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if(Permissions.iPermissionCamera(this))
+            presenter.takePhotoFromCamera()
+        if(Permissions.iPermissionReadStorage(this))
+            presenter.takePhotoFromGallery()
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
     override fun onSuccessApplicationSend(documentStatus: DocumentStatus) {
         presenter.saveOwnerIdAndStatus(documentStatus)
         Snackbar.make(rootview,getString(R.string.success_application),Snackbar.LENGTH_LONG)
@@ -76,6 +83,8 @@ class ApplicationActivity :BaseActivity() ,ApplicationAdapter.Listener,Applicati
 
     }
     override fun onSuccessApplicationUpdated() {
+        Snackbar.make(rootview,getString(R.string.success_application),Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.success_update),{finish()}).show()
     }
 
 
@@ -85,10 +94,6 @@ class ApplicationActivity :BaseActivity() ,ApplicationAdapter.Listener,Applicati
     }
     override fun onFailureApplicationFilled() {
         Snackbar.make(rootview,getString(R.string.fill),Snackbar.LENGTH_SHORT).show()
-    }
-    override fun onSuccessApplicationStatusChecked(documentStatus: DocumentStatus) {
-
-
     }
 
 

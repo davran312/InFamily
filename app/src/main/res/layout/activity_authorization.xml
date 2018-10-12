@@ -1,15 +1,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="@color/mainBackColor"
+    android:background="@drawable/main_rectangle"
     android:orientation="vertical">
 
     <TextView
         android:textColor="@android:color/white"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:layout_margin="16dp"
         android:text="@string/registration"
         android:layout_width="match_parent"

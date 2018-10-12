@@ -1,7 +1,9 @@
 package infamily.neobis.infamily.ui.timeline
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import infamily.neobis.infamily.R
 import infamily.neobis.infamily.StartApplication
 import infamily.neobis.infamily.model.Category
 import infamily.neobis.infamily.ui.article.ArticleActivity
@@ -41,7 +43,10 @@ class TimelinePresenter(val view :TimelineContract.View):TimelineContract.Presen
     fun startActivity(activity: TimelineActivity,category:Category){
         val intent = Intent(activity,ArticleActivity::class.java)
         intent.putExtra(Const.EXTRA_ARTICLE,category)
-        activity.startActivity(intent)
+
+        val options = ActivityOptions.makeCustomAnimation(activity, R.anim.abc_slide_in_bottom,R.anim.abc_slide_out_bottom)
+        activity.startActivity(intent,options.toBundle())
+
 
     }
 

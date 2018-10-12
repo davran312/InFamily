@@ -30,7 +30,7 @@ class ApplicationAdapter(context:Context,val listener:Listener):
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(positon: Int) {
-            if(StartApplication.sharedPreference.getString(positon.toString(),"") != "")
+            if(StartApplication.sharedPreference.getString(positon.toString(),null) != null)
                 itemView.imgCheck.setImageResource(R.drawable.ic_check_green)
             else
                 itemView.imgCheck.setImageResource(R.drawable.ic_check_no)

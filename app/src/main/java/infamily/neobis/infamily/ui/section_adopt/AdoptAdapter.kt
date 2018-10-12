@@ -30,7 +30,7 @@ class AdoptAdapter(private var list:List<Section>, var listener:Listener):
         fun bind(position:Int){
             val cardView = itemView.findViewById<CardView>(R.id.rootView)
             val layoutParams = cardView.getLayoutParams() as ViewGroup.MarginLayoutParams
-            layoutParams.bottomMargin = 64
+            layoutParams.bottomMargin = 8
             cardView.requestLayout()
             cardView.setBackgroundResource(R.drawable.main_rectangle)
             itemView.tvTitle.text = list[position].title

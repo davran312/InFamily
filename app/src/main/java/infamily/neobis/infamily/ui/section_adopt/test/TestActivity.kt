@@ -29,11 +29,17 @@ class TestActivity: BaseActivity() {
                 Snackbar.make(linearLayout
                         ,"Ответьте на все вопросы",Snackbar.LENGTH_SHORT).show()
             else{
-                val intent = Intent(this,TestResultActivity::class.java)
-                intent.putExtra(Const.TEST_RESULT,result)
-                startActivity(intent)
+                openResultActivity(result)
             }
         }
+    }
+
+    private fun openResultActivity(result:Double) {
+        val intent = Intent(this,TestResultActivity::class.java)
+        intent.putExtra(Const.TEST_RESULT,result)
+        startActivity(intent)
+        finish()
+
     }
 
     private fun initRecyclerView() {

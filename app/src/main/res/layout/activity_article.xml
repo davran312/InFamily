@@ -13,6 +13,7 @@
         android:fitsSystemWindows="true">
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbar"
+            app:expandedTitleMarginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -47,13 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <TextView
-                android:textSize="28sp"
-                android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:lineSpacingExtra="8dp"/>
+
             <TextView
                 android:textSize="18sp"
                 android:id="@+id/tvDesciption"

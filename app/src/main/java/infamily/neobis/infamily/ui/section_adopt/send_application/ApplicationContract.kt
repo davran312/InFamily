@@ -10,13 +10,11 @@ interface ApplicationContract {
         fun onSuccessApplicationUpdated()
         fun onFailureConnnectedWithServer()
         fun onFailureApplicationFilled()
-        fun onSuccessApplicationStatusChecked(documentStatus: DocumentStatus)
 
     }
     interface Presenter{
         fun sendApplciation()
         fun updateApplcication()
-        fun checkApplicaitonStatus()
 
     }
 }

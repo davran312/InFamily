@@ -1,16 +1,12 @@
 package infamily.neobis.infamily.ui.section_adopt
 
-import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.DialogFragment
 import infamily.neobis.infamily.R
-import infamily.neobis.infamily.StartApplication
 import infamily.neobis.infamily.data.Data
 import infamily.neobis.infamily.model.DocumentStatus
 import infamily.neobis.infamily.model.Section
 import infamily.neobis.infamily.ui.BaseActivity
-import infamily.neobis.infamily.ui.section_adopt.authorization.AuthorizationActivity
-import infamily.neobis.infamily.ui.section_adopt.send_application.ApplicationActivity
-import infamily.neobis.infamily.ui.section_adopt.test.TestActivity
 import infamily.neobis.infamily.utils.Const
 import kotlinx.android.synthetic.main.activity_adopt.*
 
@@ -23,13 +19,18 @@ class AdoptActivity: BaseActivity(),AdoptAdapter.Listener ,AdoptContract.View{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adopt)
+       checkForClickFromNotification()
         init()
+    }
+
+    private fun checkForClickFromNotification() {
+        if(intent.getStringExtra(Const.NOTIFCATION_INTENT) == "PerformClick")
+            presenter.checkApplicaitonStatus()
     }
 
     private fun init(){
         initPresenter()
         initRecyclerView()
-        initListeners()
     }
     private fun initPresenter(){
         presenter = AdoptPresenter(this,this)
@@ -40,9 +41,6 @@ class AdoptActivity: BaseActivity(),AdoptAdapter.Listener ,AdoptContract.View{
         recyclerView.adapter = adapter
     }
 
-    private fun initListeners() {
-
-    }
 
     private fun getAdoptCategoriesList(): List<Section> {
         return Data.getAdoptCategories(this)
@@ -61,13 +59,15 @@ class AdoptActivity: BaseActivity(),AdoptAdapter.Listener ,AdoptContract.View{
     }
 
     override fun onSuccessApplicationStatusChecked(documentStatus: DocumentStatus) {
-       val serverStatus =  presenter.determineServerStatus(documentStatus.status)
-        showDialogStatus(serverStatus)
+        showDialogStatus(presenter.determineStatus(documentStatus))
     }
+
+
 
     private fun showDialogStatus(serverStatus: String) {
         val ft = supportFragmentManager.beginTransaction()
-        AdoptDialogFragment(serverStatus).show(ft,Const.TAG_FOR_SHOW_DIALOG_FRAGMENT)
+        val dialog:DialogFragment = AdoptDialogFragment(serverStatus,this)
+        dialog.show(ft,Const.TAG_FOR_SHOW_DIALOG_FRAGMENT)
 
     }
 

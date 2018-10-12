@@ -8,10 +8,10 @@ object Data {
 
      fun getMainCategories(context: Context): MutableList<Section> {
         val array:MutableList<Section> = mutableListOf()
-        array.add(Section(context.getString(R.string.main_category1), R.drawable.rod))
-        array.add(Section(context.getString(R.string.main_category2), R.drawable.det))
-        array.add(Section(context.getString(R.string.main_category3), R.drawable.fam))
-        array.add(Section(context.getString(R.string.main_category4),  R.drawable.order))
+        array.add(Section(context.getString(R.string.main_category1), R.drawable.category1))
+        array.add(Section(context.getString(R.string.main_category2), R.drawable.category2))
+        array.add(Section(context.getString(R.string.main_category3), R.drawable.category3))
+        array.add(Section(context.getString(R.string.main_category4),  R.drawable.category4))
 
         return array
     }
