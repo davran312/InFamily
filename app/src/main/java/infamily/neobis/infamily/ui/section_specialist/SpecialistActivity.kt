@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.activity_adopt.*
 
 class SpecialistActivity :BaseActivity(),SpecialistContract.View,SpecialistAdapter.Listener {
 
-    private lateinit var adapter:SpecialistAdapter
-    private lateinit var presenter:SpecialistPresenter
-    private lateinit var mList:List<Specialistest>
+    private lateinit var adapter: SpecialistAdapter
+    private lateinit var presenter: SpecialistPresenter
+    private lateinit var mList: List<Specialistest>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,11 +21,13 @@ class SpecialistActivity :BaseActivity(),SpecialistContract.View,SpecialistAdapt
         setContentView(R.layout.activity_adopt)
         init()
     }
-    private fun init(){
+
+    private fun init() {
         initPresenter()
     }
 
     private fun initPresenter() {
+
         presenter = SpecialistPresenter(this)
         presenter.getSpecialistList()
     }
@@ -35,8 +37,9 @@ class SpecialistActivity :BaseActivity(),SpecialistContract.View,SpecialistAdapt
         initAdapter(list)
     }
 
-    private fun initAdapter(list: List<Specialistest>) {
-        adapter = SpecialistAdapter(list,this)
+    private fun initAdapter(list:List<Specialistest>) {
+        val imageList = getImageList()
+        adapter = SpecialistAdapter(list, this,imageList)
         recyclerView.adapter = adapter
     }
 
@@ -44,11 +47,21 @@ class SpecialistActivity :BaseActivity(),SpecialistContract.View,SpecialistAdapt
     }
 
     override fun onItemSelectedAt(position: Int) {
-        val intent = Intent(this,SpecialistNameActivity::class.java)
+        val intent = Intent(this, SpecialistNameActivity::class.java)
         intent.putExtra(Const.SERIALAIZABLE, mList[position])
         startActivity(intent)
 
     }
+    private fun getImageList(): ArrayList<Int> {
+        val list: ArrayList<Int> = ArrayList()
+        list.add(R.drawable.brainrocess)
+        list.add(R.drawable.first_aid_kit)
+        list.add(R.drawable.worker)
+        list.add(R.drawable.doctor1)
+
+        return list
+    }
+
 
 
 

@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="25sp"
         android:layout_margin="16dp"
         android:text="@string/registration"
@@ -18,19 +18,19 @@
     <android.support.design.widget.TextInputLayout
         app:errorTextAppearance="@style/error_appearance"
         android:layout_margin="8dp"
-        android:textColorHint="@android:color/white"
+        android:textColorHint="@color/colorPrimary"
             android:id="@+id/input_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <android.support.design.widget.TextInputEditText
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:id="@+id/etLogin"
                 android:padding="16dp"
                 android:inputType="textPersonName"
                 android:layout_marginLeft="24dp"
                 android:hint="@string/login"
-                android:textColorHint="@android:color/white"
+                android:textColorHint="@color/colorPrimary"
                 android:layout_marginRight="24dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" />
@@ -40,7 +40,7 @@
     <android.support.design.widget.TextInputLayout
         app:errorTextAppearance="@style/error_appearance"
         android:layout_margin="8dp"
-        android:textColorHint="@android:color/white"
+        android:textColorHint="@color/colorPrimary"
         android:id="@+id/input_mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -51,7 +51,7 @@
             android:inputType="textEmailAddress"
             android:layout_marginLeft="24dp"
             android:hint="@string/mail"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:layout_marginRight="24dp"
             android:layout_width="match_parent"
             android:layout_height="50dp" />
@@ -61,13 +61,13 @@
     <android.support.design.widget.TextInputLayout
         app:errorTextAppearance="@style/error_appearance"
         android:layout_margin="8dp"
-        android:textColorHint="@android:color/white"
+        android:textColorHint="@color/colorPrimary"
         android:id="@+id/input_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputEditText
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:id="@+id/etPhone"
             android:inputType="number"
             android:padding="16dp"
@@ -81,7 +81,7 @@
 
     <Button
         android:id="@+id/btn_registration"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:text="@string/registration"
         android:background="@drawable/main_rectangle"
         android:layout_marginTop="32dp"

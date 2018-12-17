@@ -19,7 +19,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="4dp"
             android:text="Справка о зарабртной плате"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             tools:text="Cправка с места работы с указанием должности и заработной платы либо копия декларации о " />
     </LinearLayout>
 
