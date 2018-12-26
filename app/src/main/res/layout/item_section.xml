@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:id="@+id/iwCategory"
         android:scaleType="center"
-        android:tint="#6F000000"
+        android:tint="#6f4d4c4c"
         />
 
     <TextView
